@@ -18,7 +18,6 @@ if [ $? -ne 0 ]; then
   echo "zsh install failure, exiting. Rerun script"
   exit 1
 fi
-brew tap caskroom/cask
 echo ">>>>> Done"
 
 #Common Dirs
@@ -33,20 +32,6 @@ do
   echo "> Adding $f to zshrc"
   echo "source ~/myscripts/$f" >> ~/.zshrc
 done
-echo ">> Done"
-
-#Iterm2
-echo ">> Iterm2 Install"
-brew install --cask iterm2
-if [ $? -ne 0 ]; then
-  echo "Iterm2 install failure, exiting. Rerun script"
-  exit 1
-fi
-echo ">> Done"
-
-#Common App Install
-echo ">> Installing Common Apps"
-./terminal/commonapps.sh
 echo ">> Done"
 
 #Oh My Zsh
@@ -64,10 +49,13 @@ brew install romkatv/powerlevel10k/powerlevel10k
 brew install romkatv/powerlevel10k/powerlevel10k
 echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 echo ">> Done"
-echo " >> RUN ITERM2 FOR PL10K CONFIG << "
+
+#Common App Install
+echo ">> Installing Common Apps"
+./terminal/commonapps.sh
+echo ">> Done"
 
 #Git SSL key and user config
-./terminal/gen-ssh-key.sh $workemail
 if `git --version`; then
   ./terminal/config-git-user.sh $wgitname $workemail
 else
@@ -75,3 +63,7 @@ else
   echo "Install Git then run:"
   echo "./terminal/config-git-user.sh [name] [email]"
 fi
+./terminal/gen-ssh-key.sh $workemail
+
+echo ">> Setting Default Shell"
+chsh -s /bin/zsh

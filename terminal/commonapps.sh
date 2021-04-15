@@ -1,3 +1,6 @@
+echo "> Iterm2 Cask"
+brew cask install iterm2
+
 echo "> Postman Cask"
 brew cask install postman
 
