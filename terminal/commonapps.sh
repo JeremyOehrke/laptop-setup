@@ -1,14 +1,14 @@
 echo "> Iterm2 Cask"
-brew cask install iterm2
+brew install --cask iterm2
 
 echo "> Postman Cask"
-brew cask install postman
+brew install --cask postman
 
 echo "> Docker Cask"
-brew cask install docker
+brew install --cask docker
 
 echo "> Atom Text Editor"
-brew cask install atom
+brew install --cask atom
 
 echo "> wget"
 brew install wget
