@@ -12,7 +12,7 @@ fi
 echo ">>>>> Done"
 
 #Zsh install
-echo ">>>>> Install zsh"
+echo ">>>>> Install zsh -- EXIT ZSH TERMINAL WHEN DONE TO RESUME"
 homebrew install zsh
 if [ $? -ne 0 ]; then
   echo "zsh install failure, exiting. Rerun script"
